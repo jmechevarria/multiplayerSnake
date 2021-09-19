@@ -9,7 +9,14 @@ const server = require("express")()
 // const io = socketIO(server);
 
 const sio = require("socket.io"),
-  io = sio.listen(server);
+  io = sio.listen(server, {
+    origins: [
+      "https://mp-snake-fe.herokuapp.com",
+      "https://mp-snake-be.herokuapp.com",
+      "http://127.0.0.1:8080",
+      "http://localhost:8080",
+    ],
+  });
 // const io = require("socket.io")(server);
 // io.listen(process.env.PORT || 3000);
 
