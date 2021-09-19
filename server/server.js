@@ -8,15 +8,17 @@ const server = require("express")()
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 // const io = socketIO(server);
 
-const sio = require("socket.io"),
-  io = sio.listen(server, {
-    origins: [
+const io = require("socket.io")(server, {
+  cors: {
+    origin: [
       "https://mp-snake-fe.herokuapp.com",
       "https://mp-snake-be.herokuapp.com",
       "http://127.0.0.1:8080",
       "http://localhost:8080",
     ],
-  });
+  },
+});
+
 // const io = require("socket.io")(server);
 // io.listen(process.env.PORT || 3000);
 
